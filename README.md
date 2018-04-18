@@ -17,3 +17,4 @@ Make sure you have [docker](https://docs.docker.com/install/) and [docker-compos
  - docker-compose up --build
  ```
 Now whenever you change any file nodemon restart the server and changes will reflect on page refresh
+Note: Make your while developing you're following [Best Practices](https://github.com/i0natan/nodebestpractices#1-project-structure-practices)
