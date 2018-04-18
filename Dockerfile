@@ -1,6 +1,6 @@
 FROM node:8.11.1-alpine
 
-LABEL maintainer="yash_sharma@seologistics.com"
+LABEL maintainer="yashsharma205@gmail.com"
 
 
 RUN mkdir -p /usr/src/app
