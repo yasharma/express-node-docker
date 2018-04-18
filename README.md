@@ -18,3 +18,4 @@ Make sure you have [docker](https://docs.docker.com/install/) and [docker-compos
  ```
 Now whenever you change any file nodemon restart the server and changes will reflect on page refresh
 Note: Make your while developing you're following [Best Practices](https://github.com/i0natan/nodebestpractices#1-project-structure-practices)
+Dockerfile using LTS version of node alpine linux and latest version of mongoDB
