@@ -12,8 +12,8 @@
  ```
  
 ### Steps for docker development 
+Make sure you have [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) installed on your machine
 ```bash
- - Make sure you have [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/)
  - docker-compose up --build
- 
+ ```
 Now whenever you change any file nodemon restart the server and changes will reflect on page refresh
