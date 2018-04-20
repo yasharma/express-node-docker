@@ -7,11 +7,11 @@ services:
       context: .
       dockerfile: Dockerfile-production
     ports:
-      - "3001:3001"
+      - "80:8080"
     environment:
       - NODE_ENV=production
       - DEBUG=dockerapp:server
-      - PORT=3001
+      - PORT=8080
       - DB_1_PORT_27017_TCP_ADDR=db  
     depends_on:
       - db
