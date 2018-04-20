@@ -45,7 +45,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
               echo "Building Production..."
               #docker-compose up -f docker-compose-production.yaml --build
-              docker build -t dockerapp-production -f Dockerfile-production
+              docker build -t dockerapp-production -f Dockerfile-production .
               #chmod +x scripts/build_image.sh
               #./scripts/build_image.sh production
             elif [ "${CIRCLE_BRANCH}" == "development" ]; then
