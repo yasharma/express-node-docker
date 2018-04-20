@@ -29,7 +29,7 @@ services:
     ports:
       - "27017:27017"
   db-data:
-    image: mongo
+    image: mongo:3.4
     volumes:
       - /data/db
       - /var/lib/mongodb
