@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
               echo "Building Production..."
               #chmod +x scripts/build_image.sh
               #./scripts/build_image.sh production
@@ -60,7 +60,7 @@ jobs:
           working_directory: ~/steward
           name: Tag and Push Docker Image to ECR
           command: | 
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
               echo "Tagging Production..."
               #chmod +x scripts/tag_push_image.sh
               #./scripts/tag_push_image.sh production
@@ -75,7 +75,7 @@ jobs:
           working_directory: ~/steward
           name: Deploy Docker Image to ECS
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
               echo "Deploying Production..."
               #chmod +x scripts/deploy_image.sh
               #./scripts/deploy_image.sh production
@@ -89,7 +89,7 @@ jobs:
       - run:
           name: On Success
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
                echo "Successfully Deployed Master"
             elif [ "${CIRCLE_BRANCH}" == "development" ]; then
               echo "Successfully Deployed Staging"
@@ -98,7 +98,7 @@ jobs:
       - run: 
           name: On Failure
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
                 echo "Deployment of Master Failed, rolling back migrations"
               elif [ "${CIRCLE_BRANCH}" == "development" ]; then
                 echo "Deployment of Staging Failed, rolling back migrations"
