@@ -1,0 +1,39 @@
+version: "2"
+services:
+  web:
+    container_name: dockerapp
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile-production
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - DEBUG=dockerapp:server
+      - PORT=3001
+      - DB_1_PORT_27017_TCP_ADDR=db  
+    depends_on:
+      - db
+    volumes_from:
+      - web-data
+  web-data:
+    build: .
+    entrypoint: /bin/true
+    volumes:
+      - ./:/usr/src/app
+  db:
+    container_name: mongo
+    image: mongo
+    restart: always
+    volumes_from:
+      - db-data
+    ports:
+      - "27017:27017"
+  db-data:
+    image: mongo
+    volumes:
+      - /data/db
+      - /var/lib/mongodb
+      - /var/log/mongodb
+    entrypoint: /bin/true  
