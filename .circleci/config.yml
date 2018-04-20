@@ -12,7 +12,8 @@ jobs:
       - run:
           name: Start container and verify it's working
           command: |
-            usermod -aG docker ${USER}
+            sudo usermod -aG docker ${USER}
+            groups $USER
             set -x
             docker-compose --file docker-compose-production.yaml up -d
 
