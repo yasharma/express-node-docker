@@ -9,8 +9,8 @@ configure_aws_cli(){
 tag_ecr_image(){
 	configure_aws_cli
 	eval $(aws ecr get-login --region us-east-1 --no-include-email)
-	docker tag dockerapp-production:latest 881047829880.dkr.ecr.us-east-1.amazonaws.com/dockerapp-production:latest
-    docker push 881047829880.dkr.ecr.us-east-1.amazonaws.com/dockerapp-production:latest
+	docker tag steward-ecr:latest 881047829880.dkr.ecr.us-east-1.amazonaws.com/steward-ecr:latest
+    docker push 881047829880.dkr.ecr.us-east-1.amazonaws.com/steward-ecr:latest
 	#docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/steward-ecr:$CIRCLE_SHA1
 }
 
