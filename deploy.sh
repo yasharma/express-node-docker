@@ -31,6 +31,7 @@ deploy_cluster() {
             sleep 5
         else
             echo "Deployed!"
+            docker run -p 80:8080 -it --name running-docker-app 881047829880.dkr.ecr.us-east-1.amazonaws.com/steward-ecr:latest
             return 0
         fi
     done
