@@ -61,11 +61,8 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
               echo "Tagging Production..."
-              #docker tag dockerapp-production TARGET_IMAGE[:TAG]
-              docker tag dockerapp-production:latest 881047829880.dkr.ecr.us-east-1.amazonaws.com/dockerapp-production:latest
-              docker push 881047829880.dkr.ecr.us-east-1.amazonaws.com/dockerapp-production:latest
-              #chmod +x scripts/tag_push_image.sh
-              #./scripts/tag_push_image.sh production
+              chmod +x tag_push_image.sh
+              ./tag_push_image.sh
             elif [ "${CIRCLE_BRANCH}" == "development" ]; then
               echo "Tagging Staging"
               #chmod +x scripts/tag_push_image.sh
