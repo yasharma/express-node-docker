@@ -42,7 +42,7 @@ make_task_def(){
 	task_template='[
 		{
 			"name": "steward-ecr",
-			"image": "%s.dkr.ecr.us-east-2.amazonaws.com/steward-ecr:%s",
+			"image": "%s.dkr.ecr.us-east-2.amazonaws.com/steward-ecr:latest",
 			"essential": true,
 			"memory": 200,
 			"cpu": 10,
@@ -60,7 +60,7 @@ make_task_def(){
 
 push_ecr_image(){
 	eval $(aws ecr get-login --region us-east-1 --no-include-email)
-	docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/steward-ecr:$CIRCLE_SHA1
+	docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/steward-ecr:latest
 }
 
 register_definition() {
@@ -74,6 +74,6 @@ register_definition() {
 
 }
 
-configure_aws_cli
-push_ecr_image
+#configure_aws_cli
+#push_ecr_image
 deploy_cluster
