@@ -1,7 +1,7 @@
 FROM node:8.11.1-alpine
 
 LABEL maintainer="yashsharma205@gmail.com"
-
+ENV PORT 8080
 RUN npm install --quiet -g pm2
 
 RUN mkdir -p /usr/src/app
@@ -17,4 +17,4 @@ RUN npm install --production --quiet
 
 COPY . /usr/src/app
 EXPOSE 8080
-CMD ["pm2-runtime", "process.yml"]
+CMD ["npm", "start"]
