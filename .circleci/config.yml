@@ -7,9 +7,6 @@ jobs:
       - image: circleci/node:8.11.1
     # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
       - image: mongo
-        aws_auth:  
-          aws_access_key_id: $AWS_ACCESS_KEY_ID
-          aws_secret_access_key: $ECR_AWS_SECRET_ACCESS_KEY
 
     steps:
       - checkout
