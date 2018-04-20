@@ -44,7 +44,8 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
               echo "Building Production..."
-              docker-compose up --build
+              #docker-compose up -f docker-compose-production.yaml --build
+              docker build -t dockerapp-production -f Dockerfile-production
               #chmod +x scripts/build_image.sh
               #./scripts/build_image.sh production
             elif [ "${CIRCLE_BRANCH}" == "development" ]; then
@@ -57,9 +58,12 @@ jobs:
       - deploy:
           working_directory: ~/steward
           name: Tag and Push Docker Image to ECR
-          command: | 
+          command: |
             if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
               echo "Tagging Production..."
+              #docker tag dockerapp-production TARGET_IMAGE[:TAG]
+              docker tag dockerapp-production:latest 881047829880.dkr.ecr.us-east-1.amazonaws.com/dockerapp-production:latest
+              docker push 881047829880.dkr.ecr.us-east-1.amazonaws.com/dockerapp-production:latest
               #chmod +x scripts/tag_push_image.sh
               #./scripts/tag_push_image.sh production
             elif [ "${CIRCLE_BRANCH}" == "development" ]; then
@@ -75,8 +79,8 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "circle-ci" ]; then
               echo "Deploying Production..."
-              #chmod +x scripts/deploy_image.sh
-              #./scripts/deploy_image.sh production
+              chmod +x ./deploy.sh
+              ./deploy.sh
             elif [ "${CIRCLE_BRANCH}" == "development" ]; then
               echo "Deploying Staging"
               #chmod +x scripts/deploy_image.sh
